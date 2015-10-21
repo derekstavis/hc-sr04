@@ -48,14 +48,14 @@ MODULE_PARM_DESC(gpio_trigger, "GPIO which HC-SR04 trigger is connected to. Defa
 module_param(gpio_echo, int, 0);
 MODULE_PARM_DESC(gpio_echo, "GPIO which HC-SR04 echo is connected to. Defaults to 17");
 
-// This function is called when you write something on /sys/class/hc_sr04/value
+// This function is called when you write something on /sys/class/hc-sr04/value
 static ssize_t hc_sr04_value_write(struct class *class,
                                    struct class_attribute *attr,
                                    const char *buf, size_t len) {
   return -EINVAL;
 }
 
-// This function is called when you read /sys/class/hc_sr04/value
+// This function is called when you read /sys/class/hc-sr04/value
 static ssize_t hc_sr04_value_read(struct class *class,
                                   struct class_attribute *attr, char *buf) {
   int counter;
@@ -86,7 +86,7 @@ static struct class_attribute hc_sr04_class_attrs[] = {
 
 // Name of directory created in /sys/class
 static struct class hc_sr04_class = {
-    .name = "distance",
+    .name = "hc-sr04",
     .owner = THIS_MODULE,
     .class_attrs = hc_sr04_class_attrs,
 };
